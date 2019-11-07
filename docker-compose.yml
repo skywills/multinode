@@ -1,0 +1,95 @@
+version: '3'
+services:
+    node-bitcoin:
+      image: skywills87/bitcoind:latest
+      ports: 
+        - "8001:8332"  
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'
+        - 'TESTNET=${TESTNET}'
+      volumes:
+        - "${VOL_BITCOIN_DATA}:/root/.bitcoin"            
+
+    node-litecoin:
+      image: skywills87/litecoind:latest
+      ports: 
+        - "8002:8332"        
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'
+        - 'TESTNET=${TESTNET}'        
+      volumes:
+        - "${VOL_LITECOIN_DATA}:/root/.litecoin"            
+
+    node-bchabc:
+      image: skywills87/bucash:latest
+      ports: 
+        - "8003:8332"            
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'  
+        - 'TESTNET=${TESTNET}'        
+      volumes:
+        - "${VOL_BCHABC_DATA}:/root/.bitcoin"        
+
+    node-dash:
+      image: skywills87/dashd:latest
+      ports: 
+        - "8004:8332"        
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}' 
+        - 'TESTNET=${TESTNET}'        
+      volumes:
+        - "${VOL_DASH_DATA}:/root/.dashcore"   
+
+    node-bchsv:
+      image: skywills87/bitcoinsv:latest
+      ports: 
+        - "8005:8332"            
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'   
+        - 'TESTNET=${TESTNET}'        
+      volumes:
+        - "${VOL_BCHSV_DATA}:/root/.bitcoin"    
+
+    node-qtum:
+      image: skywills87/qtumd:latest
+      ports: 
+        - "8006:8332"         
+      environment:
+        - 'RPCUSER=${RPC_USER}'
+        - 'RPCPASSWORD=${RPC_PASSWORD}'  
+        - 'TESTNET=${TESTNET}'          
+      volumes:
+        - "${VOL_QTUM_DATA}:/root/.qtum"    
+
+    node-geth:
+      image: skywills87/geth:latest
+      ports: 
+        - "8007:8545"      
+      environment:
+        - 'TESTNET=${TESTNET}'    
+      volumes:
+        - "${VOL_GETH_DATA}:/root/.ethereum"            
+
+    node-xrp:
+      image: skywills87/rippled:latest
+      ports: 
+        - "8008:5005"      
+      environment:
+        - 'TESTNET=${TESTNET}'   
+      volumes:
+        - "${VOL_XRP_DATA}:/config/"        
+
+    node-xlm:
+      image: stellar/quickstart:latest
+      ports: 
+        - "8009:8000"      
+      environment:
+        - 'NETWORK=testnet'   
+      volumes:
+        - "${VOL_XLM_DATA}:/opt/stellar/"                         
+      
