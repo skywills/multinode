@@ -82,7 +82,8 @@ services:
       environment:
         - 'TESTNET=${TESTNET}'   
       volumes:
-        - "${VOL_XRP_DATA}:/config/"        
+        - "${VOL_XRP_DATA}/config/:/config/"        
+        - "${VOL_XRP_DATA}/db/:/var/lib/rippled/"             
 
     node-xlm:
       image: stellar/quickstart:latest
